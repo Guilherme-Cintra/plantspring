@@ -1,7 +1,6 @@
 package com.guilhermecastro.amafloraSpringApi.services;
 
 import com.guilhermecastro.amafloraSpringApi.entities.Plant;
-import com.guilhermecastro.amafloraSpringApi.entities.User;
 import com.guilhermecastro.amafloraSpringApi.repositories.PlantRepository;
 import com.guilhermecastro.amafloraSpringApi.services.exceptions.DatabaseException;
 import com.guilhermecastro.amafloraSpringApi.services.exceptions.ResourceNotFoundException;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @Service
 public class PlantService {

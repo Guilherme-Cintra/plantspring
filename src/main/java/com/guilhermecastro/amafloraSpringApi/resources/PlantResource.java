@@ -1,9 +1,7 @@
 package com.guilhermecastro.amafloraSpringApi.resources;
 
 import com.guilhermecastro.amafloraSpringApi.entities.Plant;
-import com.guilhermecastro.amafloraSpringApi.entities.User;
 import com.guilhermecastro.amafloraSpringApi.services.PlantService;
-import com.guilhermecastro.amafloraSpringApi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
 package com.guilhermecastro.amafloraSpringApi.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.guilhermecastro.amafloraSpringApi.entities.user.User;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
