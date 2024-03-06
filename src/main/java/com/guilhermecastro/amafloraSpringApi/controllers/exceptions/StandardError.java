@@ -1,4 +1,4 @@
-package com.guilhermecastro.amafloraSpringApi.resources.exceptions;
+package com.guilhermecastro.amafloraSpringApi.controllers.exceptions;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

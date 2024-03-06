@@ -1,34 +1,54 @@
-package com.guilhermecastro.amafloraSpringApi.resources;
+package com.guilhermecastro.amafloraSpringApi.controllers;
 
 import com.guilhermecastro.amafloraSpringApi.entities.user.AuthenticationDTO;
+import com.guilhermecastro.amafloraSpringApi.entities.user.ResgisterDTO;
 import com.guilhermecastro.amafloraSpringApi.entities.user.User;
+import com.guilhermecastro.amafloraSpringApi.entities.user.UserRole;
+import com.guilhermecastro.amafloraSpringApi.repositories.UserRepository;
 import com.guilhermecastro.amafloraSpringApi.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 
 
 @RestController
 @RequestMapping(value = "/users")
-public class UserResource {
+public class UserController {
+
+//    @Autowired
+//    private UserService userService;
 
     @Autowired
-    private UserService userService;
+    private UserRepository userRepository;
+
+
+
     @Autowired
     AuthenticationManager authenticationManager;
 
     @PostMapping("/login")
-    public ResponseEntity<User> getById(@RequestBody @Valid AuthenticationDTO data) {
-//        User user = userService.findById(id);
-//        return ResponseEntity.ok().body(user);
+    public ResponseEntity<User> login(@RequestBody @Valid AuthenticationDTO data) {
         var emailPassword = new UsernamePasswordAuthenticationToken(data.email(), data.password());
         var auth = this.authenticationManager.authenticate(emailPassword);
 
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<User> register(@RequestBody @Valid ResgisterDTO data){
+        if (this.userRepository.findByEmail(data.email()) != null) return ResponseEntity.badRequest().build();
+
+        String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
+        UserRole role = UserRole.USER;
+        User user = new User(data.name(), data.familyName(), data.profilePicture(), data.email(), data.password(),  role);
+        this.userRepository.save(user);
+
+        return ResponseEntity.ok().body(user);
     }
 //
 //    @GetMapping(value = "/{id}")

@@ -1,6 +1,6 @@
 package com.guilhermecastro.amafloraSpringApi.repositories;
 
-import com.guilhermecastro.amafloraSpringApi.entities.Plant;
+import com.guilhermecastro.amafloraSpringApi.entities.plant.Plant;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

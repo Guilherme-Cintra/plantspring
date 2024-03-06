@@ -1,13 +1,9 @@
 package com.guilhermecastro.amafloraSpringApi.entities.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.guilhermecastro.amafloraSpringApi.entities.Plant;
-import com.guilhermecastro.amafloraSpringApi.entities.user.enums.UserRole;
+import com.guilhermecastro.amafloraSpringApi.entities.plant.Plant;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,6 +16,7 @@ import java.util.List;
 @Entity
 @Table(name = "tb_user")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -33,7 +30,6 @@ public class User implements Serializable, UserDetails {
     private String name;
     private String familyName;
     private String profilePicture;
-
     private String email;
     private String password;
     private UserRole role;
@@ -85,5 +81,14 @@ public class User implements Serializable, UserDetails {
 
     public List<Plant> getPlants() {
         return plants;
+    }
+
+    public User(String name, String familyName, String profilePicture, String email, String password, UserRole role) {
+        this.name = name;
+        this.familyName = familyName;
+        this.profilePicture = profilePicture;
+        this.email = email;
+        this.password = password;
+        this.role = role;
     }
 }

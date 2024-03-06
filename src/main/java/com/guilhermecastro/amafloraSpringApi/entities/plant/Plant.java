@@ -1,14 +1,20 @@
-package com.guilhermecastro.amafloraSpringApi.entities;
+package com.guilhermecastro.amafloraSpringApi.entities.plant;
 
 
 import com.guilhermecastro.amafloraSpringApi.entities.user.User;
 import jakarta.persistence.*;
+import lombok.*;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
 @Table(name = "tb_plant")
+
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class Plant implements Serializable {
     private static final Long serialVersionUID = 1L;
     @Id
@@ -21,27 +27,12 @@ public class Plant implements Serializable {
     private LocalTime reminder_hour;
     private Integer reminder_frequency;
     private LocalDate last_water;
+    private Boolean isActive;
+
 
     @ManyToOne
     @JoinColumn(name = "owner.id")
     private User owner;
-
-    public Plant() {
-    }
-
-    public Plant(Long id, String name, String scientificName, String description, String imageUrl, LocalTime reminder_hour, Integer reminder_frequency, LocalDate last_water, User owner) {
-
-        this.id = id;
-        this.name = name;
-        this.scientificName = scientificName;
-        this.description = description;
-        this.imageUrl = imageUrl;
-        this.reminder_hour = reminder_hour;
-        this.reminder_frequency = reminder_frequency;
-        this.last_water = last_water;
-        this.owner = owner;
-
-    }
 
     public Long getId() {
         return id;
@@ -107,11 +98,17 @@ public class Plant implements Serializable {
         this.last_water = last_water;
     }
 
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
     public User getOwner() {
         return owner;
     }
 
-    public void setOwner(User owner) {
-        this.owner = owner;
-    }
+
 }

@@ -1,5 +1,6 @@
 package com.guilhermecastro.amafloraSpringApi.services;
 
+import com.guilhermecastro.amafloraSpringApi.entities.user.User;
 import com.guilhermecastro.amafloraSpringApi.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -7,16 +8,20 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
 
-//    public User findById(Long id) {
-//       Optional<User> user = userRepository.findById(id);
-//        return user.get();
-//    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByEmail(username);
+    }
+
 //    public List<User> findAll(){
 //       return userRepository.findAll();
 //    }
@@ -62,8 +67,7 @@ public class UserService implements UserDetailsService {
 //        }
 //    }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByEmail(username);
-    }
+
+
+
 }

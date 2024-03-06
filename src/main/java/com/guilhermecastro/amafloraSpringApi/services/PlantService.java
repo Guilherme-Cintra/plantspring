@@ -1,6 +1,6 @@
 package com.guilhermecastro.amafloraSpringApi.services;
 
-import com.guilhermecastro.amafloraSpringApi.entities.Plant;
+import com.guilhermecastro.amafloraSpringApi.entities.plant.Plant;
 import com.guilhermecastro.amafloraSpringApi.repositories.PlantRepository;
 import com.guilhermecastro.amafloraSpringApi.services.exceptions.DatabaseException;
 import com.guilhermecastro.amafloraSpringApi.services.exceptions.ResourceNotFoundException;

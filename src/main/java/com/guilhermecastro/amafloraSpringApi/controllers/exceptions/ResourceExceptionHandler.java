@@ -1,4 +1,4 @@
-package com.guilhermecastro.amafloraSpringApi.resources.exceptions;
+package com.guilhermecastro.amafloraSpringApi.controllers.exceptions;
 
 import com.guilhermecastro.amafloraSpringApi.services.exceptions.DatabaseException;
 import com.guilhermecastro.amafloraSpringApi.services.exceptions.ResourceNotFoundException;

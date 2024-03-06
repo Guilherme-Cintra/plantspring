@@ -1,4 +1,4 @@
-package com.guilhermecastro.amafloraSpringApi.entities.user.enums;
+package com.guilhermecastro.amafloraSpringApi.entities.user;
 
 public enum UserRole {
     ADMIN("admin"),

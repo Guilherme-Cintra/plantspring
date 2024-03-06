@@ -1,6 +1,6 @@
-package com.guilhermecastro.amafloraSpringApi.resources;
+package com.guilhermecastro.amafloraSpringApi.controllers;
 
-import com.guilhermecastro.amafloraSpringApi.entities.Plant;
+import com.guilhermecastro.amafloraSpringApi.entities.plant.Plant;
 import com.guilhermecastro.amafloraSpringApi.services.PlantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/plants")
-public class PlantResource {
+public class PlantController {
 
     @Autowired
     private PlantService plantService;

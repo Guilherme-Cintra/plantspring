@@ -1,4 +1,4 @@
-package com.guilhermecastro.amafloraSpringApi;
+package com.guilhermecastro.amafloraSpringApi.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
